@@ -1,0 +1,35 @@
+#include <iostream>
+using namespace std;
+bool isGoodNumber(int num) {
+    int digitPos = 1;
+    while (num > 0) {
+        int digit = num % 10; 
+        if (digitPos % 2 == 1) { 
+            if (digit % 2 == 0) { 
+                return false;
+            }
+        } else {
+            if (digit % 2 == 1) { 
+                return false;
+            }
+        }
+        num = num / 10; 
+        digitPos++; 
+    }
+    return true; 
+}
+int countGoodNumbers(int N) {
+    int count = 0; 
+    for (int i = 1; i <= N; i++) { 
+        if (isGoodNumber(i)) {
+            count++; 
+        }
+    }
+    return count;
+}
+int main() {
+    int N;
+    cin >> N; 
+    cout << countGoodNumbers(N) << endl;
+    return 0;
+}
